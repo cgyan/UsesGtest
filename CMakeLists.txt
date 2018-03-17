@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.2 FATAL_ERROR)
 
-project("Uses Gtest")
+project("UsesGtest")
 set(EXE runner)
 
 IF (WIN32)
@@ -8,6 +8,13 @@ IF (WIN32)
     set(GMOCK_LIB_PATH C:/Users/Iain/GitHub/googletest/build/googlemock)
     set(GTEST_INC_PATH C:/Users/Iain/GitHub/googletest/googletest/include)
     set(GTEST_LIB_PATH C:/Users/Iain/GitHub/googletest/build/googlemock/gtest)
+ELSEIF (APPLE)
+    set(GMOCK_LIB gmock)
+    set(GMOCK_INC_PATH /Users/iainhemstock/GitHub/googletest/googlemock/include)
+    set(GMOCK_LIB_PATH /Users/iainhemstock/GitHub/googletest/build/googlemock)
+    set(GTEST_LIB gtest)
+    set(GTEST_INC_PATH /Users/iainhemstock/GitHub/googletest/googletest/include)
+    set(GTEST_LIB_PATH /Users/iainhemstock/GitHub/googletest/build/googlemock/gtest)
 ENDIF()
 
 include_directories(
@@ -16,14 +23,14 @@ include_directories(
     ${GTEST_INC_PATH}
 )
 
-find_library(
-    GMOCK_LIB libgmock
-    HINTS ${GMOCK_LIB_PATH}
+find_library(GMOCK_LIB
+    NAMES ${GMOCK_LIB}
+    PATHS ${GMOCK_LIB_PATH}
 )
 
-find_library(
-    GTEST_LIB libgtest
-    HINTS ${GTEST_LIB_PATH}
+find_library(GTEST_LIB
+    NAMES ${GTEST_LIB}
+    PATHS ${GTEST_LIB_PATH}
 )
 
 include(sources.cmake)
