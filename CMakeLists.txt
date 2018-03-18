@@ -4,6 +4,7 @@ project("UsesGtest")
 set(EXE runner)
 
 IF (WIN32)
+
     set(GMOCK_LIB_NAME libgmock)
     set(GMOCK_INC_PATH C:/Users/Iain/GitHub/googletest/googlemock/include)
     set(GMOCK_LIB_PATH C:/Users/Iain/GitHub/googletest/build/googlemock)
@@ -11,7 +12,9 @@ IF (WIN32)
     set(GTEST_LIB_NAME libgtest)
     set(GTEST_INC_PATH C:/Users/Iain/GitHub/googletest/googletest/include)
     set(GTEST_LIB_PATH C:/Users/Iain/GitHub/googletest/build/googlemock/gtest)
+
 ELSEIF (APPLE)
+
     set(GMOCK_LIB_NAME gmock)
     set(GMOCK_INC_PATH /Users/iainhemstock/GitHub/googletest/googlemock/include)
     set(GMOCK_LIB_PATH /Users/iainhemstock/GitHub/googletest/build/googlemock)
@@ -19,6 +22,7 @@ ELSEIF (APPLE)
     set(GTEST_LIB_NAME gtest)
     set(GTEST_INC_PATH /Users/iainhemstock/GitHub/googletest/googletest/include)
     set(GTEST_LIB_PATH /Users/iainhemstock/GitHub/googletest/build/googlemock/gtest)
+    
 ENDIF()
 
 include_directories(
